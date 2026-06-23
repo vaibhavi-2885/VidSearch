@@ -40,9 +40,10 @@ class IngestionResult:
     extracted_count: int
     kept_count: int
     skipped_duplicates: int
+    manifest_path: Path | None = None
 
     def to_dict(self) -> dict:
-        return {
+        data = {
             "video": self.video.to_dict(),
             "frames": [frame.to_dict() for frame in self.frames],
             "summary": {
@@ -51,3 +52,6 @@ class IngestionResult:
                 "skipped_duplicates": self.skipped_duplicates,
             },
         }
+        if self.manifest_path is not None:
+            data["manifest_path"] = str(self.manifest_path)
+        return data

@@ -43,3 +43,4 @@ def test_upload_processes_video(tmp_path: Path) -> None:
     assert body["summary"]["extracted_count"] == 3
     assert body["summary"]["kept_count"] == 2
     assert body["summary"]["skipped_duplicates"] == 1
+    assert body["manifest_path"].endswith("metadata.json")

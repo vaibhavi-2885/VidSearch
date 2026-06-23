@@ -53,5 +53,7 @@ def test_pipeline_extracts_and_deduplicates_frames(tmp_path: Path) -> None:
     assert result.extracted_count == 3
     assert result.kept_count == 2
     assert result.skipped_duplicates == 1
+    assert result.manifest_path is not None
+    assert result.manifest_path.exists()
     assert [frame.timestamp_sec for frame in result.frames] == [0.0, 2.0]
     assert all(frame.path.exists() for frame in result.frames)
