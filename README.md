@@ -75,10 +75,18 @@ http://localhost:6333/dashboard
 
 ## Next Build Step
 
-The first real implementation step is the ingestion pipeline:
+The current milestone is the ingestion pipeline:
 
 1. Accept video uploads.
 2. Extract metadata.
 3. Extract frames at 1 FPS.
 4. Deduplicate similar frames with ImageHash.
 5. Save frame paths and timestamps.
+
+Upload endpoint:
+
+```text
+POST /videos/upload
+```
+
+The endpoint accepts `.mp4`, `.mov`, `.avi`, and `.mkv` files.
